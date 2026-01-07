@@ -12,7 +12,40 @@
 <meta name="author" content="Beone Studio">
 <meta name="robots" content="index, follow">
 
-    <title>Beone Bloggers | Stream & Bio</title>
+  <title>Beone Bloggers | Stream & </title>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MusicRecording",
+      "name": "Dan Tata",
+      "url": "https://beonebloggers.com/#dj-ab-dantata",
+      "image": "https://archive.org/download/images_20260107_2000/images.jpg",
+      "byArtist": { "@type": "MusicGroup", "name": "Dj Ab" }
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Mahraz Number One",
+      "description": "Happy Independence Nigeria Video",
+      "thumbnailUrl": "https://archive.org/download/images-33_202601/images%20%2833%29.jpeg",
+      "uploadDate": "2026-01-07",
+      "contentUrl": "https://archive.org/download/aqpu-9s-4d-0zv-zr-on-3-au-j-7-bz-7-d-0-tec-o-frxy-ija-q-u-1i-b-4-uj-fohk-uo-8v-1/AQPu9s4d0zvZr-ON3AuJ7BZ7D0TEcO-FRxyIjaQ-U1iB4UjFOHkUO8v1RvgGI7pgWpsYhOZxzukdDBUISzlXtTmfiAPv1j7xFXamXf0.mp4",
+      "url": "https://beonebloggers.com/#mahraz-number-one-video"
+    },
+    {
+      "@type": "Person",
+      "name": "Imran Mai Waka",
+      "image": "https://archive.org/download/imran-photo.jpg",
+      "url": "https://beonebloggers.com/#imran-mai-waka-bio",
+      "description": "Nigerian music producer born in 2004..."
+    }
+  ]
+}
+</script>
+
+
     <style>
         :root {
             --orange: #ff6600;
@@ -183,7 +216,7 @@
         
         <div class="content-wrapper" id="stream-list">
             <h1 style="color: var(--orange)">Beone Bloggers Music</h1>
-            <div class="player-card searchable">
+            <div id="dj-ab-dantata" class="player-card searchable">
                 <h3>Dj Ab dantata</h3>
                 <p>2026 New Hit Banger By Dj Ab king of the north</p>
                 <audio controls>
@@ -199,7 +232,7 @@
         </div>
         <div class="content-wrapper">
             <h1 style="color: var(--orange)">Latest Videos</h1>
-            <div class="player-card searchable">
+            <div id="mahraz-number-one-video" class="player-card searchable">
                 <h3>Mahraz number one </h3>
                 <p>happy Independence Nigeria</p>
                 <video controls>
@@ -217,7 +250,7 @@
 
         <div class="bio-content" id="bio-list">
             <img src="https://archive.org/download/fb-img-17677706939309509/FB_IMG_17677706939309509.jpg" class="bio-img" alt="Imran Mai Waka">
-            <h2 class="searchable">Imran Mai waka</h2>
+            <h2 id="imran-mai-waka-bio" class="searchable">Imran Mai waka</h2>
             <p class="searchable">
                 Imran Mai Waka is a Nigerian music producer and singer born in 2004, raised in Gangare, Jos, Plateau State. From an early age, he showed a natural connection to music, rhythm, and sound. His journey officially began at just 13 years old while he was in JSS1 in secondary school...
             </p>
