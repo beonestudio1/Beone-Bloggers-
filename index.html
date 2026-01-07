@@ -7,23 +7,10 @@
 <meta name="google-site-verification" content="IcTvWu2bbvuL0kKRn7SLeWtgJMfkt3v5cYAJHCtlFjo" />
 
 <meta name="title" content="Beone Bloggers | Arewa's No.1 Music Stream & Artist Bio">
-<meta name="description" content="Stream the latest Arewa hits and discover top artists from Jos North, Plateau State. Beone Bloggers is your home for music distribution, video production, and deep artist biographies.">
+<meta name="description" content="Stream the latest Arewa hits and discover top and upcoming artists from Northern Nigeria. Beone Bloggers is your home for music distribution, video production, and deep artist biographies.">
 <meta name="keywords" content="Beone Bloggers, Arewa Music, Jos North Music, Plateau State Entertainment, Nigerian Music Stream, Hausa Hip Hop, Beone Studio, Music Distribution Nigeria, Arewa Artists Biography">
 <meta name="author" content="Beone Studio">
 <meta name="robots" content="index, follow">
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://beonestudio.42web.io/"> <meta property="og:title" content="Beone Bloggers | Arewa Streaming & Artist Profiles">
-<meta property="og:description" content="Discover and stream the best talent from Jos North. Official platform for Beone Studio artists.">
-<meta property="og:image" content="https://yourlink.com/your-logo.jpg"> <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Beone Bloggers | Arewa Music Hub">
-<meta property="twitter:description" content="Streaming and biographies from the heart of Plateau State.">
-<meta property="twitter:image" content="https://yourlink.com/your-logo.jpg">
-
-<meta name="geo.region" content="NG-PL" />
-<meta name="geo.placename" content="Jos North" />
-<meta name="geo.position" content="9.9189;8.8918" />
-<meta name="ICBM" content="9.9189, 8.8918" />
 
     <title>Beone Bloggers | Stream & Bio</title>
     <style>
@@ -42,10 +29,9 @@
             background-color: var(--black);
             color: var(--white);
             height: 100vh;
-            overflow: hidden; /* Prevents scrolling between sections */
+            overflow: hidden; 
         }
 
-        /* Navigation */
         nav {
             background: var(--black);
             display: flex;
@@ -61,7 +47,7 @@
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin: 0 20px;
+            margin: 0 10px;
             cursor: pointer;
             padding: 10px;
             transition: 0.3s;
@@ -72,7 +58,6 @@
             border-bottom: 2px solid var(--orange);
         }
 
-        /* Search Bar Styling */
         .search-container {
             padding: 20px;
             max-width: 500px;
@@ -89,9 +74,8 @@
             outline: none;
         }
 
-        /* Section Handling */
         .page-section {
-            display: none; /* Hidden by default */
+            display: none; 
             height: calc(100vh - 60px);
             padding: 40px 20px;
             text-align: center;
@@ -99,7 +83,7 @@
         }
 
         .page-section.active {
-            display: block; /* Only show active section */
+            display: block; 
             animation: fadeIn 0.5s ease;
         }
 
@@ -107,7 +91,6 @@
             from { opacity: 0; } to { opacity: 1; }
         }
 
-        /* Stream UI */
         .player-card {
             background: var(--grey);
             padding: 30px;
@@ -117,36 +100,69 @@
             border-top: 5px solid var(--orange);
         }
 
-        audio { width: 100%; margin-top: 15px; }
+        audio, video { width: 100%; margin-top: 15px; border-radius: 8px; }
 
-        /* Bio UI */
         .bio-content {
             max-width: 800px;
             margin: 0 auto;
         }
 
+        /* UPDATED BIO IMAGE STYLING */
         .bio-img {
-            width: 150px; height: 150px;
-            border-radius: 50%;
+            width: 300px; /* Big size */
+            height: 300px; /* Big size */
+            border-radius: 15px; /* Box form with small radius */
             border: 3px solid var(--orange);
             margin-bottom: 20px;
+            object-fit: cover;
         }
 
-        /* Floating WhatsApp */
-        .whatsapp-btn {
+        .floating-btn-container {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: #25d366;
-            width: 60px; height: 60px;
-            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .social-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 30px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-            z-index: 1000;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: rotate-expand-pause 8s infinite ease-in-out;
+        }
+
+        @keyframes rotate-expand-pause {
+            0%, 40% { width: 60px; transform: rotate(0deg); } 
+            45% { transform: rotate(360deg); }               
+            50%, 90% { width: 160px; transform: rotate(360deg); font-size: 16px; } 
+            95%, 100% { width: 60px; transform: rotate(0deg); } 
+        }
+
+        .whatsapp-btn { background: #25d366; }
+        .facebook-btn { background: #1877F2; }
+
+        .social-btn::before {
+            content: attr(data-icon);
+            animation: text-switch-pause 8s infinite ease-in-out;
+        }
+
+        @keyframes text-switch-pause {
+            0%, 45% { content: attr(data-icon); }
+            50%, 90% { content: "Contact Us"; }
+            95%, 100% { content: attr(data-icon); }
         }
 
         .hidden-item { display: none !important; }
@@ -156,7 +172,8 @@
 
     <nav>
         <button class="nav-btn active" onclick="showSection('stream')">Stream</button>
-        <button class="nav-btn" onclick="showSection('biography')">Biography</button>
+        <button class="nav-btn" onclick="showSection('videos')">Videos</button>
+        <button class="nav-btn" onclick="showSection('biography')">Bio&News</button>
     </nav>
 
     <section id="stream" class="page-section active">
@@ -167,20 +184,28 @@
         <div class="content-wrapper" id="stream-list">
             <h1 style="color: var(--orange)">Beone Bloggers Music</h1>
             <div class="player-card searchable">
-                <h3>Latest Trending Audio</h3>
-                <p>Digital Entertainment & Innovation</p>
-                <audio controls>
-                    <source src="https://www.opendrive.com/file/YOUR_FILE_ID" type="audio/mpeg">
-                </audio>
-            </div>
-            
-            <div class="player-card searchable">
                 <h3>Dj Ab dantata</h3>
                 <p>2026 New Hit Banger By Dj Ab king of the north</p>
                 <audio controls>
-    <source src="https://archive.org/download/dj-ab-dan-tata-lyric-video-256k/DJ_Ab_-_Dan_Tata__Lyric_video_%28256k%29" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
+                    <source src="https://archive.org/download/dj-ab-dan-tata-lyric-video-256k/DJ_Ab_-_Dan_Tata__Lyric_video_%28256k%29" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+    </section>
+
+    <section id="videos" class="page-section">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search videos..." onkeyup="searchContent('videos', this.value)">
+        </div>
+        <div class="content-wrapper">
+            <h1 style="color: var(--orange)">Latest Videos</h1>
+            <div class="player-card searchable">
+                <h3>Official Music Video</h3>
+                <p>High Quality Cloud Stream</p>
+                <video controls>
+                    <source src="https://od.lk/s/NDFfODY0OTEyNjhf/Abdul_Hassan_-_Meerah__Music_Video_%28720p%29.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
     </section>
@@ -191,36 +216,28 @@
         </div>
 
         <div class="bio-content" id="bio-list">
-            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=300" class="bio-img" alt="Beone Bloggers">
-            <h2 class="searchable">The Beone Story</h2>
+            <img src="https://od.lk/s/NDFfODY0OTEyNDZf/FB_IMG_17677706939309509.jpg" class="bio-img" alt="Imran Mai Waka">
+            <h2 class="searchable">Imran Mai waka</h2>
             <p class="searchable">
-                <strong>Beone Bloggers</strong> is a digital media leader founded in 2023. 
-                Based in <strong>Jos North, Plateau State</strong>, we specialize in high-quality 
-                graphics, music distribution, and cinematic storytelling.
-            </p>
-            <p class="searchable">
-                Our team invented <strong>Beone Films Inco</strong> to bring world-class entertainment 
-                to Nigeria and beyond. We connect millions through our blog and streaming platforms.
+                Imran Mai Waka is a Nigerian music producer and singer born in 2004, raised in Gangare, Jos, Plateau State. From an early age, he showed a natural connection to music, rhythm, and sound. His journey officially began at just 13 years old while he was in JSS1 in secondary school...
             </p>
             <p class="searchable" style="color: var(--orange)">Innovating for the Future of Media.</p>
         </div>
     </section>
 
-    <a href="https://wa.me/2349025350306" class="whatsapp-btn">💬</a>
+    <div class="floating-btn-container">
+        <a href="https://www.facebook.com/profile.php?id=61582106816912" class="social-btn facebook-btn" data-icon="f"></a>
+        <a href="https://wa.me/2349025350306" class="social-btn whatsapp-btn" data-icon=""></a>
+    </div>
 
     <script>
-        // 1. Strict Section Switching
         function showSection(sectionId) {
-            // Remove active class from all sections and buttons
             document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-
-            // Add active class to selected
             document.getElementById(sectionId).classList.add('active');
             event.currentTarget.classList.add('active');
         }
 
-        // 2. Fully Functional Search
         function searchContent(sectionId, query) {
             const filter = query.toLowerCase();
             const container = document.getElementById(sectionId);
@@ -230,11 +247,8 @@
                 const text = item.innerText.toLowerCase();
                 if (text.includes(filter)) {
                     item.classList.remove('hidden-item');
-                    // If it's a bio paragraph, show it. If it's a music card, show the whole card.
-                    if(item.closest('.player-card')) item.closest('.player-card').classList.remove('hidden-item');
                 } else {
                     item.classList.add('hidden-item');
-                    if(item.closest('.player-card')) item.closest('.player-card').classList.add('hidden-item');
                 }
             });
         }
