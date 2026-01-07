@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beone Bloggers | Stream & Bio</title>
+    <style>
+        :root {
+            --orange: #ff6600;
+            --black: #000000;
+            --grey: #121212;
+            --white: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background-color: var(--black);
+            color: var(--white);
+            height: 100vh;
+            overflow: hidden; /* Prevents scrolling between sections */
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--black);
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            border-bottom: 2px solid var(--orange);
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0 20px;
+            cursor: pointer;
+            padding: 10px;
+            transition: 0.3s;
+        }
+
+        .nav-btn.active {
+            color: var(--orange);
+            border-bottom: 2px solid var(--orange);
+        }
+
+        /* Search Bar Styling */
+        .search-container {
+            padding: 20px;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 1px solid var(--orange);
+            background: var(--grey);
+            color: white;
+            outline: none;
+        }
+
+        /* Section Handling */
+        .page-section {
+            display: none; /* Hidden by default */
+            height: calc(100vh - 60px);
+            padding: 40px 20px;
+            text-align: center;
+            overflow-y: auto;
+        }
+
+        .page-section.active {
+            display: block; /* Only show active section */
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; } to { opacity: 1; }
+        }
+
+        /* Stream UI */
+        .player-card {
+            background: var(--grey);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 20px auto;
+            border-top: 5px solid var(--orange);
+        }
+
+        audio { width: 100%; margin-top: 15px; }
+
+        /* Bio UI */
+        .bio-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .bio-img {
+            width: 150px; height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--orange);
+            margin-bottom: 20px;
+        }
+
+        /* Floating WhatsApp */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            z-index: 1000;
+        }
+
+        .hidden-item { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <button class="nav-btn active" onclick="showSection('stream')">Stream</button>
+        <button class="nav-btn" onclick="showSection('biography')">Biography</button>
+    </nav>
+
+    <section id="stream" class="page-section active">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search music or artists..." onkeyup="searchContent('stream', this.value)">
+        </div>
+        
+        <div class="content-wrapper" id="stream-list">
+            <h1 style="color: var(--orange)">Beone Bloggers Music</h1>
+            <div class="player-card searchable">
+                <h3>Latest Trending Audio</h3>
+                <p>Digital Entertainment & Innovation</p>
+                <audio controls>
+                    <source src="https://www.opendrive.com/file/YOUR_FILE_ID" type="audio/mpeg">
+                </audio>
+            </div>
+            
+            <div class="player-card searchable">
+                <h3>Dj Ab dantata</h3>
+                <p>2026 New Hit Banger By Dj Ab king of the north</p>
+                <audio controls>
+    <source src="https://archive.org/download/dj-ab-dan-tata-lyric-video-256k/DJ_Ab_-_Dan_Tata__Lyric_video_%28256k%29" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+            </div>
+        </div>
+    </section>
+
+    <section id="biography" class="page-section">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search bio keywords..." onkeyup="searchContent('biography', this.value)">
+        </div>
+
+        <div class="bio-content" id="bio-list">
+            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=300" class="bio-img" alt="Beone Bloggers">
+            <h2 class="searchable">The Beone Story</h2>
+            <p class="searchable">
+                <strong>Beone Bloggers</strong> is a digital media leader founded in 2023. 
+                Based in <strong>Jos North, Plateau State</strong>, we specialize in high-quality 
+                graphics, music distribution, and cinematic storytelling.
+            </p>
+            <p class="searchable">
+                Our team invented <strong>Beone Films Inco</strong> to bring world-class entertainment 
+                to Nigeria and beyond. We connect millions through our blog and streaming platforms.
+            </p>
+            <p class="searchable" style="color: var(--orange)">Innovating for the Future of Media.</p>
+        </div>
+    </section>
+
+    <a href="https://wa.me/2349025350306" class="whatsapp-btn">💬</a>
+
+    <script>
+        // 1. Strict Section Switching
+        function showSection(sectionId) {
+            // Remove active class from all sections and buttons
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+            // Add active class to selected
+            document.getElementById(sectionId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // 2. Fully Functional Search
+        function searchContent(sectionId, query) {
+            const filter = query.toLowerCase();
+            const container = document.getElementById(sectionId);
+            const items = container.querySelectorAll('.searchable');
+
+            items.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                if (text.includes(filter)) {
+                    item.classList.remove('hidden-item');
+                    // If it's a bio paragraph, show it. If it's a music card, show the whole card.
+                    if(item.closest('.player-card')) item.closest('.player-card').classList.remove('hidden-item');
+                } else {
+                    item.classList.add('hidden-item');
+                    if(item.closest('.player-card')) item.closest('.player-card').classList.add('hidden-item');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
